@@ -587,6 +587,8 @@ public final class ArduinoCppVisitor extends AbstractCommonArduinoCppVisitor imp
         }
         this.sb.append("#include <RobertaFunctions/NEPODefs.h>");
         nlIndent();
+        generateSignaturesOfUserDefinedMethods();
+        nlIndent();
 
         super.generateProgramPrefix(withWrapping);
     }
