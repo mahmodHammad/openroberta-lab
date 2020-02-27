@@ -33,7 +33,11 @@ fi
 source ${BASE_DIR}/decl.sh
 source ${SCRIPT_HELPER}/__defs.sh
 
-echo "$STAR_DATE_STAR"
+case "$CMD" in
+    auto-deploy)  : ;;
+    *)            echo "$STAR_DATE_STAR" ;;
+esac
+
 [ "$DEBUG" = 'true' ] && echo "$DATE: executing command '$CMD'"
 case "$CMD" in
     help)         [ "$QUIET" == true ] && source ${SCRIPT_HELPER}/_help.sh ;;
@@ -138,8 +142,6 @@ case "$CMD" in
                       shift
                   done
                   source ${SCRIPT_HELPER}/_alive.sh ;;
-    test)         headerMessage "TEST MODE START"
-                  source ${SCRIPT_HELPER}/_test.sh
-                  headerMessage "TEST MODE TERMINATED" ;;
+    test)         source ${SCRIPT_HELPER}/_test.sh ;;
     *)            echo "invalid command: '$CMD'" ;;
 esac
